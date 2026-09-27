@@ -1,0 +1,25 @@
+[project]
+name = "jev-laya-studies"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.15.0",
+    "huggingface-hub>=1.33.0",
+    "laya>=0.3.20",
+    "matplotlib>=3.11.2",
+    "openai>=3.19.2",
+    "pandas>=3.0.6",
+    "python-dotenv>=1.2.3",
+    "scikit-learn>=1.9.1",
+    "seaborn>=0.13.2",
+    "transformers>=5.17.0",
+    "typesafe-sdk>=0.7.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyterlab>=4.6.4",
+]
