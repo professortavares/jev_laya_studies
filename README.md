@@ -123,6 +123,29 @@ uv run python main.py
 
 ---
 
+### 06_jev_openai_collab.ipynb
+**Objetivo**: Colaboração iterativa multi-agente: OpenAI propõe, Jev avalia, feedback refina
+
+**O que esperar:**
+- Loop fechado entre modelos especializados
+- Avaliação estruturada em 5 critérios binários:
+  - Correto: logicamente consistente, sem contradições
+  - Completo: atende todos requisitos do problema
+  - Viável: implementável por pequeno time
+  - Claro: estruturado, específico, acionável
+  - Simples: evita complexidade desnecessária
+
+- **Convergência**: parar quando todos critérios ≥ 0.80 confiança
+- **Feedback loop**: critérios falhados → feedback estruturado → OpenAI refina
+- Problema em português: arquitetura de triagem automática de tickets
+- Tabela convergência: rastreia scores por rodada até sucesso
+
+- **Paradigma**: Jev como avaliador (probabilidades Noul), OpenAI como propositor (geração + refinamento)
+
+**Duração**: ~15-20 min, demonstra multi-agent refinement
+
+---
+
 ## Conceitos-Chave
 
 ### Batch Processing
@@ -152,6 +175,18 @@ Em vez de uma confiança única, descompõe decisão em múltiplos fatores inter
 | Flexibilidade | ✅ Adaptável a novos domínios | ❌ Específico ao treino |
 | Custo inicial | ✅ Sem custo de treino | ❌ Custo computacional |
 
+### Multi-Agent Collaboration
+Padrão iterativo onde modelos especializados trabalham em tandem:
+
+| Componente | Papel | Entrada | Saída |
+|-----------|-------|---------|-------|
+| **OpenAI** | Propositor | Problema + Feedback | Solução (nova ou refinada) |
+| **Jev** | Avaliador | Solução + Critérios | Scores de confiança (0-1) por critério |
+| **Feedback Loop** | Orquestrador | Scores | Feedback estruturado para refinar |
+| **Convergência** | Critério de parada | Todos scores ≥ 0.80 | Parar iteração |
+
+Ciclo: Propor → Avaliar → Feedback → Refinar → Repetir até convergência
+
 ## Próximos Passos
 
 - Explorar Laya model além de Jev
@@ -168,6 +203,7 @@ jev_laya_studies/
 │   ├── 02_jev_tweets_classification.ipynb
 │   ├── 03_jev_tweets_classification_explainability.ipynb
 │   ├── 04_jev_titanic_classification.ipynb
+│   ├── 06_jev_openai_collab.ipynb
 │   ├── disaster_tweets.csv
 │   └── titanic_train.csv
 ├── main.py
@@ -199,4 +235,4 @@ Leonardo Tavares
 
 ---
 
-**Última atualização**: 27/09/2026
+**Última atualização**: 2026-09-27
