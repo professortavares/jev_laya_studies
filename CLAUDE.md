@@ -82,6 +82,15 @@ Largest analysis: supervised vs zero-shot paradigms. Demonstrates:
 - Threshold-based explanation (0.7=favorable, 0.3=unfavorable)
 - Correlation analysis between model outputs and explanatory factors
 
+### 06_jev_openai_collab.ipynb
+Multi-agent iterative refinement: OpenAI proposes, Jev evaluates, feedback drives next iteration. Demonstrates:
+- Closed-loop collaboration between specialized models
+- Structured evaluation: 5 binary criteria (correctness, completeness, feasibility, clarity, simplicity) scored by Jev
+- Convergence detection: stop when all criteria ≥ 0.80 confidence
+- Feedback loop: failing criteria → actionable feedback → OpenAI refinement
+- Semantic state representation of architecture problem in Portuguese
+- Convergence table: track scores per round until convergence
+
 ## Key Analysis Patterns
 
 **Batch Processing**
@@ -101,6 +110,13 @@ Largest analysis: supervised vs zero-shot paradigms. Demonstrates:
 - Zero-shot (Jev): better explainability, lower metrics
 - Supervised (LogisticRegression): better metrics, less interpretable
 - Choose based on use case requirements
+
+**Iterative Multi-Agent Collaboration**
+- Use Jev as evaluator: binary judgments → confidence scores
+- Use OpenAI as proposer: generate or refine solutions based on feedback
+- Convergence criteria: all evaluation dimensions meet threshold
+- Feedback loop: failing criteria → structured feedback → next iteration
+- Stops at convergence or max_rounds, whichever comes first
 
 ## Architecture
 
